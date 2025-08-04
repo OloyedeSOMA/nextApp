@@ -99,16 +99,16 @@ export default function Home() {
           
         </div>): (displayedTodos.map(todo=>(
           
-          <div key={todo.id} className="w-[50%] h-auto mt-5 p-3 flex flex-start justify-evenly border-b-2 border-[#6C63FF] items-center justify-self-center" align="center">
+          <div key={todo.id} className="w-full md:w-[50%] h-auto mt-5 p-3 flex flex-start justify-evenly border-b-2 border-[#6C63FF] items-center justify-self-center" align="center">
             <input type="checkbox" checked={todo.completed} onChange={(e) => updateCompleted(todo.id, e.target.checked)} />
             <h3 className="w-[200px]">{todo.title}</h3>
             {/* this is to get updated data for details page */}
-            <Link href={{pathname: `${todo.id}`,query: {id:todo.id, title: todo.title, completed: todo.completed }}}><div className="w-auto p-1 bg-[#6C63FF] rounded-sm text-white cursor-pointer"><VisibilityOutlinedIcon/></div></Link>
-            <div className="w-auto p-1 bg-[#6C63FF] rounded-sm text-white cursor-pointer" onClick={() => {
+            <Link href={{pathname: `${todo.id}`,query: {id:todo.id, title: todo.title, completed: todo.completed }}}><div className="w-auto p-1  mr-2 md:mr-0 bg-[#6C63FF] rounded-sm text-white cursor-pointer"><VisibilityOutlinedIcon/></div></Link>
+            <div className="w-auto p-1 mr-2 md:mr-0 bg-[#6C63FF] rounded-sm text-white cursor-pointer" onClick={() => {
               setSelectedTodo(todo);
               setShowEditModal(true);
             }}><EditOutlinedIcon/></div>
-            <div className="w-auto p-1 bg-red-500 rounded-sm text-white cursor-pointer" onClick={()=>deleteTodo(todo.id)}>  <DeleteOutlinedIcon/></div>
+            <div className="w-auto p-1  mr-2 md:mr-0 bg-red-500 rounded-sm text-white cursor-pointer" onClick={()=>deleteTodo(todo.id)}>  <DeleteOutlinedIcon/></div>
           </div>
 
           
@@ -122,19 +122,19 @@ export default function Home() {
           onClose={() => setShowAddModal(false)}
           onCreate={handleCreateTodo}
         />
-      )};
+      )}
       {showEditModal && (
         <EditTodoModal
           onClose={() => setShowEditModal(false)}
         todo={selectedTodo}
         onSave={handleUpdate}
         />
-      )};
+      )}
 
 
 
       
-      <div className="bg-[#6C63FF] cursor-pointer flex text-white absolute bottom-30 right-30 w-[150px] h-auto rounded-sm p-1" onClick={() => setShowAddModal(true)}>
+      <div className="bg-[#6C63FF] cursor-pointer flex text-white absolute bottom-20 md:bottom-30 right-30 w-[150px] h-auto rounded-sm p-1" onClick={() => setShowAddModal(true)}>
         <span className='mr-1'>Add New Todo</span>    
         <AddIcon/>
       </div>
