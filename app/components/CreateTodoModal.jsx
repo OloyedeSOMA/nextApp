@@ -21,7 +21,7 @@ const CreateTodoModal = ({ onClose, onCreate }) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...form,
-          userId:1 // required by JSONPlaceholder
+          userId:1 
         }),
       }); 
 
@@ -30,7 +30,7 @@ const CreateTodoModal = ({ onClose, onCreate }) => {
 
       const newTodo = await res.json();
       
-      onCreate(newTodo); // update UI immediately
+      onCreate(newTodo); // update UI 
       onClose();
     } catch (error) {
       console.error("Error creating todo:", error);
